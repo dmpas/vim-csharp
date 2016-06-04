@@ -9,6 +9,10 @@ if exists("current_compiler")
 endif
 let current_compiler = "cs"
 
+if !exists("g:net_framework_compiler_executable")
+  let g:net_framework_compiler_executable = "csc.exe"
+endif
+
 if exists(":CompilerSet") != 2		" older Vim always used :setlocal
   command -nargs=* CompilerSet setlocal <args>
 endif
@@ -18,4 +22,4 @@ CompilerSet errorformat+=%f(%l\\,%v):\ %t%*[^:]:\ %m,
             \%trror%*[^:]:\ %m,
             \%tarning%*[^:]:\ %m
 
-execute 'CompilerSet makeprg=' . cs#get_net_compiler("csc.exe") . "\\ %"
+execute 'CompilerSet makeprg=' . cs#get_net_compiler(g:net_framework_compiler_executable) . "\\ %"

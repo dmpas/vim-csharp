@@ -6,7 +6,7 @@
 function! s:get_net_framework_dir(version)
 
     if exists("g:net_framework_top")
-        net_framework_top = g:net_framework_top
+        let net_framework_top = g:net_framework_top
     elseif a:version == "12"
         let net_framework_top = "c:\\progra~2\\MSBuild\\"
     else
@@ -24,6 +24,9 @@ function! s:get_net_framework_dir(version)
     elseif a:version == "12"
         return net_framework_top . "12.0\\Bin\\"
     endif
+
+    " just return top
+    return net_framework_top
 
 endfunction
 
